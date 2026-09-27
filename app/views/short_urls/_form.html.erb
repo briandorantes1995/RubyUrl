@@ -1,0 +1,30 @@
+<%= form_with model: @short_url, class: "space-y-5" do |form| %>
+
+  <%if form.object.errors.any? %>
+    <div class="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800" role="alert">
+      <% form.object.errors.full_messages.each do |error| %>
+        <div><%= error %></div>
+      <% end %>
+    </div>
+  <% end %>
+
+
+  <div>
+    <%= form.label :original_url,"Url Original", class: "block" %>
+    <%= form.text_field :original_url, class: "max-w-full", placeholder: "https://ejemplo.com/una-url-muy-larga" %>
+  </div>
+
+  <% if user_signed_in? %>
+  <div>
+    <%= form.label :expires_at,"Valido hasta", class: "block" %>
+    <div class="mt-1 flex flex-wrap items-center gap-2">
+      <%= form.datetime_select :expires_at, { include_blank: true },
+            class: "rounded-lg border border-slate-300 bg-white px-2 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30" %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="pt-2">
+    <%= form.button class: "cursor-pointer rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40" %>
+  </div>
+<% end %>

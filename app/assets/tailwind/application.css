@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+/* Base styles so the default Devise forms look decent */
+@layer base {
+  h2 {
+    @apply mb-6 text-2xl font-bold text-slate-900;
+  }
+
+  label {
+    @apply text-sm font-medium text-slate-700;
+  }
+
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="url"] {
+    @apply mt-1 w-full max-w-md rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30;
+  }
+
+  input[type="checkbox"] {
+    @apply h-4 w-4 rounded border-slate-300 accent-indigo-600;
+  }
+
+  input[type="submit"] {
+    @apply cursor-pointer rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500;
+  }
+
+  .field {
+    @apply mb-4;
+  }
+
+  .actions {
+    @apply mt-6 mb-4;
+  }
+
+  main a:not([class]) {
+    @apply text-sm text-indigo-600 hover:underline;
+  }
+}

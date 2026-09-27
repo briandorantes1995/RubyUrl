@@ -1,0 +1,10 @@
+<div class="mx-auto max-w-xl">
+  <h1 class="mb-6 text-2xl font-bold text-slate-900"><%= "Editar URl #{@short_url.id}" %></h1>
+  <div class="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+    <%= render partial:"form",locals: {short_url: @short_url }%>
+  </div>
+  <div class="mt-6 flex justify-end">
+    <%= button_to "Delete" , @short_url, method: :delete, data: { turbo_confirm: "Estas Seguro?" },
+          class: "cursor-pointer rounded-lg border border-red-300 bg-white px-4 py-2 text-sm font-semibold text-red-700 shadow-sm hover:bg-red-50" %>
+  </div>
+</div>

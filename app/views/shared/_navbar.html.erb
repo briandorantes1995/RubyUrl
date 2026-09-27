@@ -1,0 +1,46 @@
+<% link_classes = "block rounded-md px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 hover:text-slate-900" %>
+<% active_classes = "block rounded-md px-3 py-2 text-sm font-medium bg-indigo-50 text-indigo-700" %>
+
+<header class="sticky top-0 z-30 w-full border-b border-slate-200 bg-white/90 backdrop-blur" data-controller="navbar">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+    <%= link_to root_path, class: "flex items-center gap-2 text-lg font-bold text-slate-900" do %>
+      <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white">
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
+      </span>
+      Blyt
+    <% end %>
+
+    <button type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-md text-slate-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 md:hidden"
+            data-action="navbar#toggle" data-navbar-target="button" aria-controls="navbar-menu" aria-expanded="false">
+      <span class="sr-only">Abrir menú</span>
+      <svg class="h-6 w-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14"/></svg>
+    </button>
+
+    <div id="navbar-menu" data-navbar-target="menu"
+         class="absolute inset-x-0 top-full hidden border-b border-slate-200 bg-white px-4 py-3 shadow-sm md:static md:block md:border-0 md:bg-transparent md:p-0 md:shadow-none">
+      <ul class="flex flex-col gap-1 md:flex-row md:items-center md:gap-2">
+        <li>
+          <%= link_to "Inicio", root_path, class: current_page?(root_path) ? active_classes : link_classes,
+                                           aria: { current: (current_page?(root_path) ? "page" : nil) } %>
+        </li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Mis URLs", short_urls_path, class: link_classes %></li>
+          <li>
+            <%= link_to "Perfil", edit_user_registration_path,
+                        class: current_page?(edit_user_registration_path) ? active_classes : link_classes %>
+          </li>
+          <li class="mt-2 border-t border-slate-200 pt-2 md:mt-0 md:ml-2 md:border-0 md:pt-0">
+            <%= button_to "Cerrar sesión", destroy_user_session_path, method: :delete,
+                          class: "w-full rounded-md border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 md:w-auto" %>
+          </li>
+        <% else %>
+          <li><%= link_to "Iniciar sesión", new_user_session_path, class: link_classes %></li>
+          <li class="md:ml-2">
+            <%= link_to "Registrarse", new_user_registration_path,
+                        class: "block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-medium text-white hover:bg-indigo-500" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
