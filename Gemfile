@@ -71,7 +71,7 @@ gem "devise", "~> 5.0"
 gem "dotenv", "~> 3.2"
 
 # json 3.x removed positional options; ActiveSupport 8.1 still calls JSON.parse(json, options)
-gem "json", "< 3"
+gem "json", "< 4"
 
 gem "whenever", "~> 1.1"
 
