@@ -57,7 +57,7 @@ class ShortUrlsController < ApplicationController
 
   private
   def url_params
-    permitted = [:original_url]
+    permitted = [ :original_url ]
     permitted << :expires_at if user_signed_in?
     params.require(:short_url).permit(*permitted)
   end
