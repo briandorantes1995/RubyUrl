@@ -64,7 +64,7 @@ gem "foreman", "~> 0.90.0"
 
 gem "overmind", "~> 2.5"
 
-gem "tailwindcss-rails", "~> 4.6"
+gem "tailwindcss-rails", "~> 4.7"
 
 gem "devise", "~> 5.0"
 
